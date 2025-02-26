@@ -1,22 +1,25 @@
 import streamlit as st
 
-st.title("Medikamentenrechner")
-
 def calculate_dosage(weight, medication):
     if medication == "Ibuprofen":
-        return weight * 10  # mg per kg
+        # Dosage: 10 mg/kg every 6-8 hours, max 40 mg/kg/day
+        dose = weight * 10
+        max_dose = weight * 40
     elif medication == "Paracetamol":
-        return weight * 15  # mg per kg
-    elif medication == "NSAR":
-        return weight * 12  # mg per kg
+        # Dosage: 15 mg/kg every 4-6 hours, max 60 mg/kg/day
+        dose = weight * 15
+        max_dose = weight * 60
     else:
-        return 0
+        dose = 0
+        max_dose = 0
+    return dose, max_dose
 
-st.header("Dosierungsrechner")
+st.title("Medikamentenrechner")
 
-weight = st.number_input("Geben sie das Gewicht des Patienten in kg ein:", min_value=0.0, step=0.1)
-medication = st.selectbox("Wählen sie das Medikament aus:", ["Ibuprofen", "Paracetamol", "NSAR"])
+weight = st.number_input("Geben Sie das Gewicht des Patienten in kg ein:", min_value=0.0, step=0.1)
+medication = st.selectbox("Wählen Sie das Medikament:", ["Ibuprofen", "Paracetamol"])
 
-if st.button("Berechne Dosierung"):
-    dosage = calculate_dosage(weight, medication)
-    st.write(f"Die empfohlene Dosierung für {medication} beträgt {dosage} mg.")
+if st.button("Berechnen"):
+    dose, max_dose = calculate_dosage(weight, medication)
+    st.write(f"Empfohlene Einzeldosis für {medication}: {dose} mg")
+    st.write(f"Maximale Tagesdosis für {medication}: {max_dose} mg")
