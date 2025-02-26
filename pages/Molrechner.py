@@ -31,10 +31,15 @@ def calculate_molar_mass(formula):
 
     return molar_mass
 
-if __name__ == "__main__":
-    formula = input("Enter the chemical formula: ")
+import streamlit as st
+
+st.title("Molar Mass Calculator")
+
+formula = st.text_input("Enter the chemical formula:")
+
+if formula:
     try:
         molar_mass = calculate_molar_mass(formula)
-        print(f"The molar mass of {formula} is {molar_mass} g/mol")
+        st.write(f"The molar mass of {formula} is {molar_mass} g/mol")
     except ValueError as e:
-        print(e)
+        st.error(e)
