@@ -16,3 +16,6 @@ if gewicht > 0 and groesse > 0:
     st.write(f"Ihr BMI beträgt: {bmi:.2f}")
 else:
     st.write("Bitte geben Sie gültige Werte für Gewicht und Größe ein.")
+
+    # Einfügen eines Logos
+    st.image("https://example.com/path-to-your-logo.png", caption="BMI Berechner Logo")
