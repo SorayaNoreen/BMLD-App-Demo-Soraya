@@ -14,8 +14,8 @@ def calculate_dosage(weight, medication):
 
 st.header("Dosierungsrechner")
 
-weight = st.number_input("Geben Sie das Gewicht des Patienten in kg ein:", min_value=0.0, step=0.1)
-medication = st.selectbox("Wählen Sie das Medikament aus:", ["Ibuprofen", "Paracetamol", "NSAR"])
+weight = st.number_input("Geben sie das Gewicht des Patienten in kg ein:", min_value=0.0, step=0.1)
+medication = st.selectbox("Wählen sie das Medikament aus:", ["Ibuprofen", "Paracetamol", "NSAR"])
 
 if st.button("Berechne Dosierung"):
     dosage = calculate_dosage(weight, medication)
