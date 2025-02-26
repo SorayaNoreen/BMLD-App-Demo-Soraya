@@ -1,9 +1,6 @@
 import streamlit as st
 
 
-# BMI Berechner
-st.header("BMI Berechner")
-
 # Eingabe des Gewichts
 gewicht = st.number_input("Geben Sie Ihr Gewicht in Kilogramm ein:", min_value=0.0, step=0.1)
 
