@@ -1,39 +1,18 @@
-from datetime import datetime, timedelta
+import streamlit as st
 
-def create_training_plan(race_date, start_date):
-    plan = []
-    current_date = start_date
-    weeks_to_race = (race_date - start_date).days // 7
-
-    for week in range(weeks_to_race):
-        week_plan = {
-            'week': week + 1,
-            'days': []
-        }
-        for day in range(7):
-            day_plan = {
-                'date': current_date.strftime('%Y-%m-%d'),
-                'workout': ''
-            }
-            if day == 0:  # Monday
-                day_plan['workout'] = 'Rest'
-            elif day in [1, 3, 5]:  # Tuesday, Thursday, Saturday
-                day_plan['workout'] = 'Run 5-10 km'
-            elif day in [2, 4]:  # Wednesday, Friday
-                day_plan['workout'] = 'Cross-training'
-            else:  # Sunday
-                day_plan['workout'] = 'Long run 10-20 km'
-            week_plan['days'].append(day_plan)
-            current_date += timedelta(days=1)
-        plan.append(week_plan)
-    
+def generate_training_plan(goal, fitness_level, time_budget):
+    # Dummy implementation of training plan generation
+    plan = f"Training Plan for {goal} with fitness level {fitness_level} and time budget {time_budget} hours per week."
     return plan
 
-race_date = datetime(2025, 4, 13)
-start_date = datetime(2024, 10, 13)
-training_plan = create_training_plan(race_date, start_date)
+st.title("Trainingsplan-Generator")
 
-for week in training_plan:
-    print(f"Week {week['week']}:")
-    for day in week['days']:
-        print(f"  {day['date']}: {day['workout']}")
+st.header("Individueller Laufplan basierend auf Ihrem Ziel, Ihrer aktuellen Fitness und Ihrem Zeitbudget")
+
+goal = st.selectbox("Wählen Sie Ihr Ziel", ["5K", "10K", "Halbmarathon", "Marathon"])
+fitness_level = st.selectbox("Wählen Sie Ihr aktuelles Fitnesslevel", ["Anfänger", "Fortgeschritten", "Profi"])
+time_budget = st.slider("Verfügbares Zeitbudget (Stunden pro Woche)", 1, 20, 5)
+
+if st.button("Trainingsplan erstellen"):
+    plan = generate_training_plan(goal, fitness_level, time_budget)
+    st.write(plan)
