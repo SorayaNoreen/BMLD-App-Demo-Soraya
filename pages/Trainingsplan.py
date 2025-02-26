@@ -16,3 +16,24 @@ time_budget = st.slider("Verfügbares Zeitbudget (Stunden pro Woche)", 1, 20, 5)
 if st.button("Trainingsplan erstellen"):
     plan = generate_training_plan(goal, fitness_level, time_budget)
     st.write(plan)
+
+    def detailed_training_plan(goal, fitness_level, time_budget):
+        days = ["Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag", "Sonntag"]
+        plan = {}
+        
+        for day in days:
+            if goal == "5K":
+                plan[day] = f"Laufen für {time_budget / 7:.2f} Stunden"
+            elif goal == "10K":
+                plan[day] = f"Laufen für {time_budget / 7:.2f} Stunden"
+            elif goal == "Halbmarathon":
+                plan[day] = f"Laufen für {time_budget / 7:.2f} Stunden"
+            elif goal == "Marathon":
+                plan[day] = f"Laufen für {time_budget / 7:.2f} Stunden"
+        
+        return plan
+
+    if st.button("Detaillierten Trainingsplan erstellen"):
+        detailed_plan = detailed_training_plan(goal, fitness_level, time_budget)
+        for day, activity in detailed_plan.items():
+            st.write(f"{day}: {activity}")
