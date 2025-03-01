@@ -1,4 +1,5 @@
 streamlit
+folium
 streamlit-authenticator
 pandas
 webdav4
