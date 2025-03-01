@@ -37,7 +37,7 @@ landmarks = {
 st.title("Sehenswürdigkeiten Finder")
 
 # User input for country
-country = st.text_input("Geben Sie ein Land ein:")
+country = st.text_input("Geben Sie ein Land ein:", key="country_input")
 
 # Display landmarks if country is in the dictionary
 if country:
@@ -54,20 +54,5 @@ if country:
             ).add_to(m)
         # Display the map
         st_folium(m, width=700, height=500)
-    else:
-        st.write("Land nicht gefunden. Bitte versuchen Sie es erneut.")
-
-# Streamlit app
-st.title("Sehenswürdigkeiten Finder")
-
-# User input for country
-country = st.text_input("Geben Sie ein Land ein:")
-
-# Display landmarks if country is in the dictionary
-if country:
-    if country in landmarks:
-        st.write(f"Sehenswürdigkeiten in {country}:")
-        for landmark in landmarks[country]:
-            st.write(f"- {landmark}")
     else:
         st.write("Land nicht gefunden. Bitte versuchen Sie es erneut.")
