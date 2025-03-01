@@ -4,4 +4,4 @@ streamlit-authenticator
 pandas
 webdav4
 fsspec
-st_folium
+streamlit_folium
