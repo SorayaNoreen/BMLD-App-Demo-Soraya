@@ -1,4 +1,5 @@
 import streamlit as st
+from datetime import datetime
 
 def berechne_kalorien(alter, gewicht, groesse, geschlecht, aktivitaetslevel):
     if geschlecht == 'Männlich':
@@ -30,3 +31,5 @@ aktivitaetslevel = st.selectbox('Aktivitätslevel', ['Wenig aktiv', 'Leicht akti
 if st.button('Kalorien berechnen'):
     kalorien = berechne_kalorien(alter, gewicht, groesse, geschlecht, aktivitaetslevel)
     st.write(f'Der tägliche Kalorienbedarf beträgt: {kalorien:.2f} Kalorien')
+    jetzt = datetime.now()
+    st.write(f'Berechnet am: {jetzt.strftime("%d.%m.%Y %H:%M:%S")}')
