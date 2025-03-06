@@ -25,7 +25,7 @@ st.title('Kalorienrechner')
 alter = st.number_input('Alter', min_value=0, max_value=120, value=25)
 gewicht = st.number_input('Gewicht (kg)', min_value=0.0, max_value=300.0, value=70.0)
 groesse = st.number_input('Größe (cm)', min_value=0.0, max_value=250.0, value=175.0)
-geschlecht = st.selectbox('Geschlecht', ['Männlich', 'Weiblich'])
+geschlecht = st.selectbox('Geschlecht', ['Männlich', 'Weiblich', 'Divers'])
 aktivitaetslevel = st.selectbox('Aktivitätslevel', ['Wenig aktiv', 'Leicht aktiv', 'Mäßig aktiv', 'Sehr aktiv', 'Extrem aktiv'])
 
 if st.button('Kalorien berechnen'):
