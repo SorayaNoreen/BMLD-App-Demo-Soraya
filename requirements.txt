@@ -1,7 +1,7 @@
 streamlit
-folium
 streamlit-authenticator
 pandas
 webdav4
 fsspec
-streamlit_folium
+matplotlib
+numpy
