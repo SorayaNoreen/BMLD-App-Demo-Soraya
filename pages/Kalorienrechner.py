@@ -1,3 +1,6 @@
+from utils.login_manager import LoginManager
+LoginManager().go_to_login('Start.py') 
+
 import streamlit as st
 from datetime import datetime
 
@@ -33,3 +36,7 @@ if st.button('Kalorien berechnen'):
     st.write(f'Der tägliche Kalorienbedarf beträgt: {kalorien:.2f} Kalorien')
     jetzt = datetime.now()
     st.write(f'Berechnet am: {jetzt.strftime("%d.%m.%Y %H:%M:%S")}')
+
+
+from utils.data_manager import DataManager
+    DataManager().append_record(session_state_key='data_df', record_dict=result)
