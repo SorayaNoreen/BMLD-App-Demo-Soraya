@@ -25,6 +25,10 @@ if st.button('Kalorien berechnen'):
     jetzt = datetime.now()
     st.write(f'Berechnet am: {jetzt.strftime("%d.%m.%Y %H:%M:%S")}')
     
+    # Beispielwerte für Kalorienverbrauch und Kalorienaufnahme
+    calories_burned = kalorien * 0.8  # Beispiel: 80% des Kalorienbedarfs
+    calories_intake = kalorien * 1.2  # Beispiel: 120% des Kalorienbedarfs
+
     # Daten in ein Dictionary speichern
     result = {
         'timestamp': jetzt.strftime("%Y-%m-%d %H:%M:%S"),
@@ -34,7 +38,8 @@ if st.button('Kalorien berechnen'):
         'Geschlecht': geschlecht,
         'Aktivitätslevel': aktivitaetslevel,
         'Kalorienbedarf': kalorien,
-        'calories': kalorien  # Hier wird der Kalorienbedarf als Wert für die Spalte 'calories' gespeichert
+        'calories_burned': calories_burned,
+        'calories_intake': calories_intake
     }
 
     # Speichern der Daten mit DataManager
