@@ -26,8 +26,8 @@ if st.button('Kalorien berechnen'):
     st.write(f'Berechnet am: {jetzt.strftime("%d.%m.%Y %H:%M:%S")}')
     
     # Beispielwerte für Kalorienverbrauch und Kalorienaufnahme
-    calories_burned = kalorien * 0.8  # Beispiel: 80% des Kalorienbedarfs
-    calories_intake = kalorien * 1.2  # Beispiel: 120% des Kalorienbedarfs
+    Kalorien_verbrannt = kalorien * 0.8  # Beispiel: 80% des Kalorienbedarfs
+    Kalorien_Aufnahme = kalorien * 1.2  # Beispiel: 120% des Kalorienbedarfs
 
     # Daten in ein Dictionary speichern
     result = {
@@ -38,9 +38,14 @@ if st.button('Kalorien berechnen'):
         'Geschlecht': geschlecht,
         'Aktivitätslevel': aktivitaetslevel,
         'Kalorienbedarf': kalorien,
-        'calories_burned': calories_burned,
-        'calories_intake': calories_intake
+        'Kalorien': kalorien,  # Hier war der Fehler: Doppelpunkt fehlte
+        'Kalorien_verbrannt': Kalorien_verbrannt,
+        'Kalorien_Aufnahme': Kalorien_Aufnahme
     }
+
+    # Speichern der Daten mit DataManager
+    DataManager().append_record(session_state_key='data_df', record_dict=result)
+    st.success("Die Daten wurden erfolgreich gespeichert!")
 
     # Speichern der Daten mit DataManager
     DataManager().append_record(session_state_key='data_df', record_dict=result)
