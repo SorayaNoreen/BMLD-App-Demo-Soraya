@@ -16,7 +16,6 @@ groesse = st.number_input('Größe (cm)', min_value=0.0, max_value=250.0, value=
 geschlecht = st.selectbox('Geschlecht', ['Männlich', 'Weiblich', 'Divers'])
 aktivitaetslevel = st.selectbox('Aktivitätslevel', ['Wenig aktiv', 'Leicht aktiv', 'Mäßig aktiv', 'Sehr aktiv', 'Extrem aktiv'])
 
-# Button zur Berechnung der Kalorien
 if st.button('Kalorien berechnen'):
     # Berechnung des Kalorienbedarfs
     kalorien = berechne_kalorien(alter, gewicht, groesse, geschlecht, aktivitaetslevel)
@@ -34,7 +33,8 @@ if st.button('Kalorien berechnen'):
         'Größe': groesse,
         'Geschlecht': geschlecht,
         'Aktivitätslevel': aktivitaetslevel,
-        'Kalorienbedarf': kalorien
+        'Kalorienbedarf': kalorien,
+        'calories': kalorien  # Hier wird der Kalorienbedarf als Wert für die Spalte 'calories' gespeichert
     }
 
     # Speichern der Daten mit DataManager
