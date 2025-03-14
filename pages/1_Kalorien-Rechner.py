@@ -6,8 +6,6 @@ from datetime import datetime
 from utils.data_manager import DataManager
 from functions.Berechner import berechne_kalorien
 
-
-
 # Titel der Streamlit-App
 st.title('Kalorienrechner')
 
@@ -29,19 +27,16 @@ if st.button('Kalorien berechnen'):
     st.write(f'Berechnet am: {jetzt.strftime("%d.%m.%Y %H:%M:%S")}')
     
     # Daten in ein Dictionary speichern
-result = {
-    'timestamp': jetzt.strftime("%Y-%m-%d %H:%M:%S"),
-    'Alter': alter,
-    'Gewicht': gewicht,
-    'Größe': groesse,
-    'Geschlecht': geschlecht,
-    'Aktivitätslevel': aktivitaetslevel,
-    'Kalorienbedarf': kalorien
-}
+    result = {
+        'timestamp': jetzt.strftime("%Y-%m-%d %H:%M:%S"),
+        'Alter': alter,
+        'Gewicht': gewicht,
+        'Größe': groesse,
+        'Geschlecht': geschlecht,
+        'Aktivitätslevel': aktivitaetslevel,
+        'Kalorienbedarf': kalorien
+    }
 
-from utils.data_manager import DataManager
-DataManager().append_record(session_state_key='data_df', record_dict=result)
-    
     # Speichern der Daten mit DataManager
     DataManager().append_record(session_state_key='data_df', record_dict=result)
     st.success("Die Daten wurden erfolgreich gespeichert!")
