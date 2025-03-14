@@ -29,15 +29,18 @@ if st.button('Kalorien berechnen'):
     st.write(f'Berechnet am: {jetzt.strftime("%d.%m.%Y %H:%M:%S")}')
     
     # Daten in ein Dictionary speichern
-    result = {
-        'Alter': alter,
-        'Gewicht': gewicht,
-        'Größe': groesse,
-        'Geschlecht': geschlecht,
-        'Aktivitätslevel': aktivitaetslevel,
-        'Kalorienbedarf': kalorien,
-        'Berechnet am': jetzt.strftime("%d.%m.%Y %H:%M:%S")
-    }
+result = {
+    'timestamp': jetzt.strftime("%Y-%m-%d %H:%M:%S"),
+    'Alter': alter,
+    'Gewicht': gewicht,
+    'Größe': groesse,
+    'Geschlecht': geschlecht,
+    'Aktivitätslevel': aktivitaetslevel,
+    'Kalorienbedarf': kalorien
+}
+
+from utils.data_manager import DataManager
+DataManager().append_record(session_state_key='data_df', record_dict=result)
     
     # Speichern der Daten mit DataManager
     DataManager().append_record(session_state_key='data_df', record_dict=result)

@@ -1,5 +1,6 @@
 from utils.login_manager import LoginManager
 import streamlit as st
+import pandas as pd
 
 # ====== Start Login Block ======
 LoginManager().go_to_login('Start.py')  
@@ -22,9 +23,11 @@ if data_df is None or data_df.empty:
 required_columns = ['timestamp', 'calories_burned', 'calories_intake']
 missing_columns = [col for col in required_columns if col not in data_df.columns]
 
+# Fehlende Spalten mit Standardwerten hinzufügen
 if missing_columns:
-    st.error(f"Die folgenden Spalten fehlen in den Daten: {', '.join(missing_columns)}")
-    st.stop()
+    st.warning(f"Die folgenden Spalten fehlen in den Daten: {', '.join(missing_columns)}. Sie werden mit Standardwerten ergänzt.")
+    for col in missing_columns:
+        data_df[col] = 0  # Standardwert hinzufügen
 
 # Konvertiere die 'timestamp'-Spalte in ein Datetime-Format, falls nötig
 if not pd.api.types.is_datetime64_any_dtype(data_df['timestamp']):
