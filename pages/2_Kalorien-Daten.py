@@ -35,6 +35,11 @@ if data_df['timestamp'].isnull().all():
 
 data_df = data_df.dropna(subset=['timestamp'])
 
+# Fehlende Spalten mit Standardwerten ergänzen
+if 'calories' not in data_df.columns:
+    st.warning("Die Spalte 'calories' fehlt in den Daten. Sie wird mit Standardwerten ergänzt.")
+    data_df['calories'] = 0  # Standardwert hinzufügen
+
 # Sort dataframe by timestamp
 if not data_df.empty:
     data_df = data_df.sort_values('timestamp', ascending=False)
@@ -42,6 +47,15 @@ else:
     st.info("Keine gültigen Daten nach der Bereinigung vorhanden.")
     st.stop()
 
+# Display table
+st.dataframe(data_df)
+
+# Optional: Add a plot for better visualization
+st.subheader('Kalorienverbrauch über die Zeit')
+if 'timestamp' in data_df.columns and 'calories' in data_df.columns:
+    st.line_chart(data_df.set_index('timestamp')['calories'])
+else:
+    st.warning('Die Daten enthalten keine gültigen Spalten für die Grafik.')
 # Display table
 st.dataframe(data_df)
 
