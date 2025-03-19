@@ -37,17 +37,17 @@ if not pd.api.types.is_datetime64_any_dtype(data_df['timestamp']):
 data_df = data_df.dropna(subset=['timestamp'])
 
 # Kalorienverbrauch über Zeit
+st.subheader('Kalorienverbrauch über Zeit')
 st.line_chart(data=data_df.set_index('timestamp')['calories_burned'], 
               use_container_width=True)
-st.caption('Kalorienverbrauch über Zeit (kcal)')
 
 # Kalorienaufnahme über Zeit
+st.subheader('Kalorienaufnahme über Zeit')
 st.line_chart(data=data_df.set_index('timestamp')['calories_intake'], 
               use_container_width=True)
-st.caption('Kalorienaufnahme über Zeit (kcal)')
 
 # Kalorienbilanz über Zeit
+st.subheader('Kalorienbilanz über Zeit')
 data_df['calorie_balance'] = data_df['calories_intake'] - data_df['calories_burned']
 st.line_chart(data=data_df.set_index('timestamp')['calorie_balance'], 
               use_container_width=True)
-st.caption('Kalorienbilanz über Zeit (kcal)')
