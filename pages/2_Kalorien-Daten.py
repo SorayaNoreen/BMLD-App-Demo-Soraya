@@ -49,10 +49,3 @@ else:
 
 # Display table
 st.dataframe(data_df)
-
-# Optional: Add a plot for better visualization
-st.subheader('Kalorienverbrauch über die Zeit')
-if 'timestamp' in data_df.columns and 'calories' in data_df.columns:
-    st.line_chart(data_df.set_index('timestamp')['calories'])
-else:
-    st.warning('Die Daten enthalten keine gültigen Spalten für die Grafik.')
